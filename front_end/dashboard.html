@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AI Digital Analyzer Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="dashboard-page">
+
+    <div class="sidebar">
+        <h2>AI Analyzer</h2>
+
+        <ul>
+    <li>📂 Data Upload</li>
+    <li>🤖 AI Analysis</li>
+    <li>📑 Reports</li>
+    <li>📊 Visualization</li>
+
+    <li onclick="window.location.href='crud.html'">
+        📝 CRUD Operations
+    </li>
+
+    <li onclick="logout()">🚪 Logout</li>
+</ul>
+    </div>
+
+    <div class="main-content">
+
+        <h1>Welcome to AI Digital Analyzer Dashboard</h1>
+
+        <div class="card">
+            <h2>📂 Data Upload</h2>
+            <input type="file">
+            <br><br>
+            <button>Upload Data</button>
+        </div>
+
+        <div class="card">
+            <h2>🤖 AI Analysis</h2>
+            <p>Total Records Analyzed: 1500</p>
+            <p>Patterns Detected: 24</p>
+            <p>Prediction Accuracy: 95%</p>
+        </div>
+
+        <div class="card">
+            <h2>📑 Reports</h2>
+            <button>Generate Report</button>
+            <button>Download PDF</button>
+        </div>
+
+        <div class="card">
+            <h2>📊 Visualization</h2>
+
+            <div class="chart">
+                <div class="bar" style="height:120px;">80%</div>
+                <div class="bar" style="height:90px;">60%</div>
+                <div class="bar" style="height:140px;">95%</div>
+                <div class="bar" style="height:70px;">45%</div>
+            </div>
+        </div>
+
+    </div>
+
+<script>
+function logout(){
+    window.location.href = "login.html";
+}
+</script>
+
+</body>
+</html>
