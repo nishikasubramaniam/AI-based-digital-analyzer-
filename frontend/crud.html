@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ledger — Records</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body onload="initCrud()">
+
+<header class="topbar">
+  <div class="wordmark">LEDGER <span>// data backend</span></div>
+  <div class="topbar-right">
+    <div id="statusStamp" class="stamp">checking…</div>
+    <button class="logout-btn" onclick="logout()">Log out</button>
+  </div>
+</header>
+
+<div class="app-shell">
+  <nav class="sidenav">
+    <a href="dashboard.html">Dashboard</a>
+    <a href="crud.html" class="active">Ledger / CRUD</a>
+  </nav>
+
+  <main class="main">
+    <h1 class="page-title">Records</h1>
+    <p class="page-sub">View, add, edit, search, and export</p>
+
+    <div style="display:grid; grid-template-columns: 260px 1fr; gap:24px; align-items:start;">
+      <div>
+        <div class="card" id="addCard" style="display:none;">
+          <h2><em>01</em>New entry</h2>
+          <div id="addFields"></div>
+          <button class="btn-gold" onclick="addRow()">Record entry</button>
+        </div>
+
+        <div class="card" id="filterCard" style="display:none;">
+          <h2><em>02</em>Search</h2>
+          <label for="filterCol">Column</label>
+          <select id="filterCol"></select>
+          <label for="filterVal">Contains</label>
+          <input type="text" id="filterVal" placeholder="e.g. Chennai">
+          <button class="btn-primary" onclick="applyFilter()">Search</button>
+          <button class="btn-ghost" onclick="clearFilter()">Clear search</button>
+        </div>
+
+        <div class="card" id="statsCard" style="display:none;">
+          <h2><em>03</em>Figures</h2>
+          <button class="btn-ghost" onclick="loadStats()">Refresh figures</button>
+          <div class="stats-grid" id="statsGrid"></div>
+        </div>
+      </div>
+
+      <div class="ledger">
+        <div class="ledger-head">
+          <h1 id="ledgerTitle">The Ledger</h1>
+          <div class="meta" id="ledgerMeta">—</div>
+        </div>
+        <div class="table-wrap" id="tableWrap">
+          <div class="empty-state">
+            <div class="glyph">§</div>
+            <p>No entries yet. Go to Dashboard and upload a CSV to open the ledger.</p>
+          </div>
+        </div>
+        <div class="pager" id="pager" style="display:none;">
+          <span id="pageInfo"></span>
+          <div class="controls">
+            <button id="prevBtn" onclick="changePage(-1)">◄ Prev</button>
+            <button id="nextBtn" onclick="changePage(1)">Next ►</button>
+            <button type="button" onclick="downloadCSV(event)">Export ⤓</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+
+<div class="toast" id="toast"></div>
+<script src="script.js"></script>
+</body>
+</html>

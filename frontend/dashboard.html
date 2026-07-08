@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ledger — Dashboard</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body onload="initDashboard()">
+
+<header class="topbar">
+  <div class="wordmark">LEDGER <span>// data backend</span></div>
+  <div class="topbar-right">
+    <div id="statusStamp" class="stamp">checking…</div>
+    <button class="logout-btn" onclick="logout()">Log out</button>
+  </div>
+</header>
+
+<div class="app-shell">
+  <nav class="sidenav">
+    <a href="dashboard.html" class="active">Dashboard</a>
+    <a href="crud.html">Ledger / CRUD</a>
+  </nav>
+
+  <main class="main">
+    <h1 class="page-title">Dashboard</h1>
+    <p class="page-sub">Overview and data upload</p>
+
+    <div class="card">
+      <h2><em>01</em>Summary</h2>
+      <div id="summaryBox"><p class="hint">Loading…</p></div>
+    </div>
+
+    <div class="card">
+      <h2><em>02</em>Upload CSV</h2>
+      <label for="csvFile">Choose file</label>
+      <input type="file" id="csvFile" accept=".csv">
+      <button class="btn-gold" onclick="dashboardUpload()">Open ledger with this file</button>
+      <p class="hint" id="uploadStatus"></p>
+      <p class="hint">This replaces the current ledger. Head to <a href="crud.html">Ledger / CRUD</a> afterwards to view and edit records.</p>
+    </div>
+  </main>
+</div>
+
+<div class="toast" id="toast"></div>
+<script src="script.js"></script>
+</body>
+</html>
